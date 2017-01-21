@@ -19,6 +19,8 @@ const authToken = '4687247e8cd42345bb2c7952fdd92bb8';
 
 const client = twilio(accountSid, authToken);
 
+// For production
+const port = process.env.PORT || 3000;
 // view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -241,6 +243,6 @@ app.get ('/map', (req,res) => {
 	});
 })
 
-app.listen(3000, () => {
-	console.log ("Server started on port 3000");
+app.listen(port, () => {
+	console.log (`Server started on ${port}`);
 })
