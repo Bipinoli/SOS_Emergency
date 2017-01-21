@@ -1,17 +1,24 @@
-var express = require('express');
-var mongojs = require('mongojs');
-var expressValidator = require('express-validator');
-var path = require('path');
-var url = require('url');
-var cookieParser = require('cookie-parser');
-var flash = require('connect-flash');
-var session = require('express-session');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var ObjectId = mongojs.ObjectId;
-var bodyParser = require('body-parser');
-var db = mongojs('SOS', ['users']);
-var app = express();
+const express = require('express');
+const mongojs = require('mongojs');
+const expressValidator = require('express-validator');
+const path = require('path');
+const url = require('url');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const ObjectId = mongojs.ObjectId;
+const bodyParser = require('body-parser');
+const db = mongojs('SOS', ['users']);
+const twilio = require('twilio');
+const app = express();
+
+const accountSid = 'AC4ac919d88cc285153f3e1cb327b07f9c';
+const authToken = '4687247e8cd42345bb2c7952fdd92bb8';
+
+const client = twilio(accountSid, authToken);
+
 // view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -90,7 +97,25 @@ app.get('/', function (req, res) {
 
   // Cookies that have been signed
   console.log('Signed Cookies: ', req.signedCookies)
-})
+});
+
+app.post('/', (req,res) => {
+	const adminNumber = '+14692086632';
+	const phoneNumber = req.body.phoneNumber;
+	const body = 'You are doing great!';
+
+    client.messages.create({
+        to: phoneNumber,
+        from: adminNumber,
+        body: body,
+    },  (err, message) => {
+        if (err) res.status(500).send(err);
+        console.log("sms sent");
+        console.log(message.sid);
+        console.log(`Message sent on: ${message.dateCreated}`);
+        res.status(201).send("We will be in touch with you soon!");
+    });
+});
 
 app.get('/login', (req, res) => {
 	res.render ('login', {

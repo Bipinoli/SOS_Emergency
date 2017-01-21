@@ -23,7 +23,8 @@
     "mongoose": "^4.7.7",
     "passport": "^0.3.2",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "twilio": "^2.11.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
