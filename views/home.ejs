@@ -9,7 +9,7 @@
 		<form id="contactForm" role="form">
 			<div class="form-group">
 				<label for="phoneNumber">Phone Number</label>
-				<input type="text" id="phoneNumber" class="form-control">
+				<input type="text" id="phoneNumber" placeholder="+9779860917264" class="form-control">
 				<button class="btn btn-default" type="submit">Submit</button>
 			</div>
 		</form>
@@ -29,9 +29,10 @@
                     phoneNumber: $('#phoneNumber').val(),
                 }
             }).done(function (data) {
-                alert(data.message);
+                $(".submit-phone").addClass('hide');
             }).fail(function (error) {
-                alert(JSON.stringify(error));
+                alert("Error! Please check the logs!");
+                console.log(JSON.stringify(error));
             });
         });
 
