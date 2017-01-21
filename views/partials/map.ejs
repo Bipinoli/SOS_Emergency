@@ -1,0 +1,199 @@
+<% include header %>
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<div id="map"></div>
+<script>
+    let map;
+    const data = {
+        type: "FeatureCollection",
+        features: [
+            {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [
+            85.540066,27.619475
+
+
+
+                    ]
+                },
+                info: {
+                    type: "Text",
+                    crime: `
+                        <div id="content">
+                            <div id="siteNotice"></div>
+                            <h1 id="firstHeading" class="firstHeading">KU Boys Hostel</h1>
+                            <div id="bodyContent">
+                                <p>Suspicious activities at <b>KU Boys Hostel</b> Please be Careful!</p>
+                                <p>More info at <a href="https://www.nepalpolice.gov.np/" target="_blank">Nepal Police!</a></p>
+                            </div>
+                        </div>`
+                }
+            },
+            {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [
+                        
+85.536081,27.616045
+                    ]
+                },
+                info: {
+                    type: "Text",
+                    crime: `
+                        <div id="content">
+                            <div id="siteNotice"></div>
+                            <h1 id="firstHeading" class="firstHeading">KU Girls Hostel</h1>
+                            <div id="bodyContent">
+                                <p>Unknown activities at <b>KU Girls Hostel</b> Tread Lightly!</p>
+                                <p>More info at <a href="https://www.nepalpolice.gov.np/" target="_blank">Nepal Police!</a></p>
+                            </div>
+                        </div>`
+                }
+            },{
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [
+                        
+ 85.537375,27.619867
+                    ]
+                },
+                info: {
+                    type: "Text",
+                    crime: `
+                        <div id="content">
+                            <div id="siteNotice"></div>
+                            <h1 id="firstHeading" class="firstHeading">KU Girls Hostel</h1>
+                            <div id="bodyContent">
+                                <p>Unknown activities at <b>KU Girls Hostel</b> Tread Lightly!</p>
+                                <p>More info at <a href="https://www.nepalpolice.gov.np/" target="_blank">Nepal Police!</a></p>
+                            </div>
+                        </div>`
+                }
+            },{
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [
+                        
+ 85.539328,27.621797
+                    ]
+                },
+                info: {
+                    type: "Text",
+                    crime: `
+                        <div id="content">
+                            <div id="siteNotice"></div>
+                            <h1 id="firstHeading" class="firstHeading">KU Girls Hostel</h1>
+                            <div id="bodyContent">
+                                <p>Unknown activities at <b>KU Girls Hostel</b> Tread Lightly!</p>
+                                <p>More info at <a href="https://www.nepalpolice.gov.np/" target="_blank">Nepal Police!</a></p>
+                            </div>
+                        </div>`
+                }
+            },
+            {
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [
+                         85.533345,27.617737
+                    ]
+                },
+                info: {
+                    type: "Text",
+                    crime: `
+                        <div id="content">
+                            <div id="siteNotice"></div>
+                            <h1 id="firstHeading" class="firstHeading">KU University</h1>
+                            <div id="bodyContent">
+                                <p>Welcome to the Final Problem at <b>KU University</b> Please be Careful!</p>
+                                <p>More info at <a href="https://www.nepalpolice.gov.np/" target="_blank">Nepal Police!</a></p>
+                            </div>
+                        </div>`
+                }
+            }
+        ]
+    }
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: {lat: -35.865427, lng: 151.196123},
+            mapTypeId: 'terrain'
+        });
+
+        let infoWindow = new google.maps.InfoWindow({map: map});
+
+        // HTML5 Geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                let pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('You are here!');
+                map.setCenter(pos);
+            }, () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // No Geolocation :(
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+        }
+        geojsonPlot(data);
+    }
+
+    function geojsonPlot(results) {
+        for (let i = 0; i < results.features.length; i++) {
+            let coords = results.features[i].geometry.coordinates;
+            let crimeData = results.features[i].info.crime;
+            let latLng = new google.maps.LatLng(coords[1], coords[0]);
+            let infowindow = new google.maps.InfoWindow({
+               content: crimeData
+            });
+            let marker = new google.maps.Marker({
+                position: latLng,
+                animation: google.maps.Animation.DROP,
+                map: map
+            });
+            marker.addListener('click', () => {
+                infowindow.open(map, marker);
+            });
+            marker.addListener('mouseover', () => {
+         if (marker.getAnimation() !== null) {
+                 marker.setAnimation(null);
+         } else {
+                 marker.setAnimation(google.maps.Animation.BOUNCE);
+         }
+        });
+        }
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uKh5oqESRivA4V_5Pxt7Mm5H0UnacQA&callback=initMap">
+
+</script>
+<% include footer %>

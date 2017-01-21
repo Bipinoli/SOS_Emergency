@@ -1,0 +1,63 @@
+<% include partials/header %>
+ <!-- Forms
+      ================================================== -->
+      <div id="frm">
+      <div class="bs-docs-section">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h1 id="forms">Registration</h1>
+              <p>Accurate information ensures your own safety. Be as authentic as you can.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="well bs-component">
+              <form class="form-horizontal" onsubmit="submitform(this.Id, '/register', 'error'),return false;" id="form" method="POST" action="/register">
+                <fieldset>
+                  <legend>Personal Details</legend>
+                  <div id="error"><% if (typeof errors !== 'undefined') { %>
+  <ul>
+    <%  errors.forEach (function (error) { %>
+    <%= error.msg %><br>
+    <% }) %>
+  </ul>
+<% } %>
+                 </div>
+                  <div class="form-group">
+                    <div class="col-lg-10">
+                      <input type="text" class="default_font input-sm form-control" id="fname" name="fname" placeholder="First Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10">
+								<input type="text" class="default_font input-sm form-control" id="lname" name="lname" placeholder="Last Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10">
+                <input type="text" class="default_font input-sm form-control" id="email" name="email" placeholder="Email Address">
+                    </div>
+                  </div><div class="form-group">
+                    <div class="col-lg-10">
+                <input type="password" class="default_font input-sm form-control" id="password" name="pw" placeholder="Password">
+                    </div>
+                  </div><div class="form-group">
+                    <div class="col-lg-10">
+								<input type="password" class="default_font input-sm form-control" id="pwd" name="pwd" placeholder="Retype Password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="reset" class="btn btn-default">Reset</button>
+                      <button type="submit" id="regsub" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+          </div>
+<% include partials/footer %>

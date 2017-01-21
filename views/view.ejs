@@ -1,0 +1,8 @@
+<% include partials/header %>
+	<ul>
+		<%	contacts.forEach (function (contact) { %>
+		<a href="/view/<%=contact._id %>"><%= contact.fname %> <%= contact.lname %></a> <% if (typeof detailed != 'undefined') { %>
+		<%= contact.email %><% } %> <a href="/delete/<%=contact._id %>">Delete</a><br>
+		<% }) %>
+	</ul>
+<% include partials/footer %>

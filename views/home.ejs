@@ -1,0 +1,17 @@
+<% include partials/header %>
+<br><br>
+<div class="container">
+<center><img src="/public/images/emer.png" class="sosbtn"><br><a href="/reportform" class="btn btn2" style="color:#fff;">Report Abuse</a></center>
+</div><!-- /.container -->
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+	    $(".sosbtn").click(function(){
+	         $.getScript("../../sms.js");
+	    });
+});
+
+</script>
+
+<% include partials/footer %>

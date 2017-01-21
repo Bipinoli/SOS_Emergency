@@ -1,0 +1,16 @@
+<% include partials/header %>
+<% if (typeof errors !== 'undefined') { %>
+	<ul>
+		<%	errors.forEach (function (error) { %>
+		<%= error.msg %><br>
+		<% }) %>
+	</ul>
+<% } %>
+<form method="POST" action="/add">
+	<input type="text" class="input default_font" name="fname" placeholder="First Name"><br>
+	<input type="text" class="input default_font" name="lname" placeholder="Last Name"><br>
+	<input type="text" class="input default_font" name="email" placeholder="Email"><br>
+	<input type="text" class="input default_font" name="dob" placeholder="DOB (YYYY-MM-DD)"><br>
+	<input type="submit" class="btn default_font" name="submit" value="Submit">
+</form>
+<% include partials/footer %>

@@ -1,0 +1,39 @@
+<% include partials/header %><h1 style="margin-left:30px">Welcome to the Dashboard!</h1>
+<div id="frm" style="float:left">
+        <div class="row">
+              <h3 id="forms">Message us</h3>
+              <p>If there is anything you want to tell us, a complaint, a suggestion, we are here to listen</p>
+          </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="well bs-component" style="margin-left: 50px; padding-left:18px">
+              <form class="form-horizontal" id="form" method="POST" action="/login">
+                <fieldset>
+                  <div id="error">
+                  <% if (typeof error != 'undefined') { %>
+                  <%= message %>
+                  <% } %>
+                 </div>
+                  <div class="form-group">
+                    <div class="col-lg-10">
+                      <input type="text" class="default_font input-sm form-control" id="email" name="email" placeholder="Email Address">
+                    </div><br><div class="col-lg-10">
+                      <input type="text" class="default_font input-sm form-control" id="email" name="email" placeholder="Mobile Number">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10"><input class="form-control input-lg" type="text" id="inputLarge">
+                    </div></div><div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" id="regsub" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+          </div>
+                  </div>
+                   <div class="row">
+            <br><div id="feed"> <h3 id="forms">NEWS FEED</h3>A real-time updating crime feed is coming soon.</div></div>
+<% include partials/footer %>
