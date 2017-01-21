@@ -102,7 +102,7 @@ app.get('/', function (req, res) {
 app.post('/', (req,res) => {
 	const adminNumber = '+14692086632';
 	const phoneNumber = req.body.phoneNumber;
-	const body = 'You are doing great!';
+	const body = req.body.message;
 
     client.messages.create({
         to: phoneNumber,
