@@ -1,47 +1,28 @@
 <% include partials/header %>
 <br><br>
 <div class="container">
-<center>
-	<img src="/public/images/emer.png" class="sosbtn">
-	<br>
-</center>
-	<div class="submit-phone hide">
-		<form id="contactForm" role="form">
-			<div class="form-group">
-				<label for="phoneNumber">Phone Number</label>
-				<input type="text" id="phoneNumber" value="+9779860917264" placeholder="+9779860917264" class="form-control">
-			</div>
-			<div class="form-group">
-				<label for="message">Message</label>
-				<input type="text" id="message" placeholder="Enter your message!">
-			</div>
-			<button class="btn btn-default" type="submit">Submit</button>
-		</form>
-	</div>
-</div><!-- /.container -->
+	<center>
+		<img src="/public/images/emer.png" id="sosbtn" class="sosbtn">
+	</center>
+</div>
 
 <script type="text/javascript">
 	$(document).ready(function(){
-        $('#contactForm').on('submit', function(e) {
-            e.preventDefault();
-
-            $.ajax({
-                url: '/',
-                method: 'POST',
-                dataType: 'json',
-                data: {
-                    phoneNumber: $('#phoneNumber').val(),
-                }
-            }).done(function (data) {
-                $(".submit-phone").addClass('hide');
-            }).fail(function (error) {
-                alert("Error! Please check the logs!");
-                console.log(JSON.stringify(error));
-            });
-        });
-
-		$(".sosbtn").click(function(){
-	         $(".submit-phone").removeClass('hide');
+		$('#sosbtn').on('click', function(e) {
+			$.ajax({
+				url: '/',
+				method: 'POST',
+				dataType: 'json',
+				success: (result) => {
+				    $(".container").html(result)
+				}
+			}).done(function (data) {
+				console.log(data);
+				$("#sosbtn").addClass('hide');
+			}).fail(function (error) {
+				alert("Message Sent! Check your logs!");
+				console.log(JSON.stringify(error));
+			});
 		});
 	});
 

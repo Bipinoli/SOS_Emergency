@@ -102,21 +102,22 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', (req,res) => {
-	const adminNumber = '+14692086632';
-	const phoneNumber = req.body.phoneNumber;
-	const body = req.body.message;
+	const twilio = '+14692086632';
+	const phoneNumber = '+9779860917264';
 
     client.messages.create({
         to: phoneNumber,
-        from: adminNumber,
-        body: body,
+        from: twilio,
+        body: "Welcome to The Final Problem",
     },  (err, message) => {
-        if (err) res.status(500).send(err);
-        console.log("sms sent");
-        console.log(message.sid);
-        console.log(`Message sent on: ${message.dateCreated}`);
-        res.status(201).send("We will be in touch with you soon!");
-    });
+		if (err) {
+			res.status(500).send(err);
+		} else {
+			console.log(`sms sent: ${message.sid}`);
+			console.log(`Message sent on: ${message.dateCreated}`);
+			res.status(201).send("Message Sent!");
+		}
+	});
 });
 
 app.get('/login', (req, res) => {
