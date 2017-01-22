@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SOS_Animated (copy).iml" filepath="$PROJECT_DIR$/.idea/SOS_Animated (copy).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sos-with-sms.iml" filepath="$PROJECT_DIR$/.idea/sos-with-sms.iml" />
     </modules>
   </component>
 </project>
