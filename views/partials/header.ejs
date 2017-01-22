@@ -1,54 +1,60 @@
+<% var tips= {
+  1: "Be careful while on social network - that is the biggest motherlode of crime in technology. Cyber-crimes are not hacking anymore.",
+  2: "Traveling in the night on public transport or through lonely alleys should be made as infrequent as possible.",
+  3: "Don't involve in shady businesses that can put you in a compromising situation.",
+  4: "Don't try to spam us with hoaxes, because every spam from your account dampens your credibility and leverage whereas every good report recorded gets you up the ranks."
+} %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="/public/images/favicon.ico">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
 
-  <title><%=title %> SOS</title>
+    <title><%=title %> SOS</title>
 
-  <!-- jquery needs to be loaded before bootstrap for bootstrap to work properly-->
-  <script
-          src="https://code.jquery.com/jquery-3.1.1.min.js"
-          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-          crossorigin="anonymous"></script>
+    <!-- jquery needs to be loaded before bootstrap for bootstrap to work properly-->
+     <script
+  src="http://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 
-  <!-- Bootstrap core CSS -->
-  <link href="/public/css/bootstrap.css" rel="stylesheet">
-  <!-- why load this when you are already loading it in the next line <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
-  <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="public/js/global.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/public/css/bootstrap.css" rel="stylesheet">
+    <link href="/public/css/styles.css" rel="stylesheet">
+    <!-- why load this when you are already loading it in the next line <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+    <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="public/js/global.js"></script>
   <!--jQuery kati load garya hooo? <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
-  <link href="/public/css/styles.css" rel="stylesheet">
-</head>
+  </head>
 
-<body>
-<nav class="navbar navbar-inverse >
+  <body>
+  	<nav class="navbar navbar-inverse >
   <div class="container">
-<div class="navbar-header">
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
-  <a class="navbar-brand" href="/">SOS</a>
-</div>
-<div id="navbar" class="collapse navbar-collapse">
-  <ul class="nav navbar-nav">
-    <li><a href="/">Home</a></li>
-    <li><a href="/">Data & Figures</a></li>
-    <li><a href="/map">Map</a></li>
-    <li><a href="#contact">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul><div id="search"><form method="GET" action="/search">
-      <input type="text" id="s" placeholder="Search..." class="input search" name="t"><input type="submit" value="Go!" hidden></form><% if (typeof User!='def') { %>
-    <div id="lr"><ul class="nav navbar-nav">        <li><a href="login">Login</a></li><li><a href="reg">Register</a></li>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SOS</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/charts">Data & Figures</a></li>
+        <li><a href="/map">Map</a></li>
+        <li><a href="#contact">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul><div id="search"><form method="GET" action="/search">
+<input type="text" id="s" placeholder="Search..." class="input search" name="t"><input type="submit" value="Go!" hidden></form><% if (typeof User!='def') { %>
+<div id="lr"><ul class="nav navbar-nav">        <li><a href="login">Login</a></li><li><a href="reg">Register</a></li>
       </ul></div></div><%  } else { } %>~
-</div><!--/.nav-collapse -->
-</div>
-i</nav>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>

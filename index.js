@@ -244,6 +244,12 @@ app.get ('/map', (req,res) => {
 	});
 })
 
+app.get('/charts', (req,res) => {
+	res.render('piechart', {
+		title: "Charts & Diagrams | "
+	})
+})
+
 app.listen(port, () => {
 	console.log (`Server started on ${port}`);
 })
