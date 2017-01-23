@@ -10,3 +10,9 @@ That is we provide support for emergency. Our app is not a separate system in it
 Our app mainatains the database of all the crime activities cum prevented crime. It can do all sorts of awesome things with that database like visualizing the crime dynamics, marking the dangerous place on user's geomap. Provide the safest feasible route from origin to destination. 
 
 And above all the most crucial feature of our app is SOS button. While at emergency user can mimick that button press with the volume and power button combination or they can directley press SOS button inside app. After the button is pressed it sends the sms to the emergency contact along with alerting the police around that geolocation. This reduces the overhead so crucial for the emergency situation.
+
+Developers:
+  Bipin Oli
+  Lawerence Khadka
+  Sharad Duwal
+  Aayush Gautam
