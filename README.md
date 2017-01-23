@@ -12,7 +12,7 @@ Our app mainatains the database of all the crime activities cum prevented crime.
 And above all the most crucial feature of our app is SOS button. While at emergency user can mimick that button press with the volume and power button combination or they can directley press SOS button inside app. After the button is pressed it sends the sms to the emergency contact along with alerting the police around that geolocation. This reduces the overhead so crucial for the emergency situation.
 
 Developers:
-  Bipin Oli
-  Lawerence Khadka
-  Sharad Duwal
+  Bipin Oli,
+  Lawerence Khadka,
+  Sharad Duwal,
   Aayush Gautam
